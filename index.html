@@ -1,0 +1,38 @@
+<<!DOCTYPE html>
+
+<html ng-app="myApp">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  </head>
+  
+  <body ng-controller="myController">
+    <h1>Welcome to the Bank of Korea!</h1>
+    <div ng-hide="authenticated">
+      <div ng-hide="accountFound">
+        Account number: <input type="text" ng-model="accountNumber"/>
+        <button ng-click="findAccount()">Submit</button>
+      </div>
+
+      <div ng-show="accountFound">
+        <h2>Welcome {{ customer.name }}</h2>
+        <p ng-show="invalidPin">Invalid Pin</p>
+        Enter pin: <input type="text" ng-model="pin" />
+        <button ng-click="checkPin()">Submit</button>
+      </div>
+    </div>
+    <div ng-show="authenticated">
+     <h1> 
+        {{ customer.name }} is successfully validated.
+     </h1> 
+      
+      <p>You are freely to chose what you want in this options:</p>
+      <button ng-click="balance()">Balance</button>
+      <button ng-click="deposit()">Deposit</button>
+      <button ng-click="withdraw()">Withdraw</button>
+      <button ng-click="exit()">Exit</button>
+      <input type="text" />
+      <p ng-show="processMessage != undefined">{{ processMessage }}</p>
+    </div>
+  </body>
+</html>
